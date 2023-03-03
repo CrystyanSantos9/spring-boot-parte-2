@@ -24,19 +24,19 @@ services:
       - my-db:/var/lib/mysql
     networks:
       - vollmed
-  api:
-    image: API.med.voll/api 
-    ports: 
-     - "8081:8081"
-    environment:
-      - MYSQL_URL=jdbc:mysql://db:3306/vollmed_api
-      - MYSQL_USER=root
-      - MYSQL_PASSWORD=pass
-      - JWT_SECRET=vegeta22
-    depends_on:
-      - db
-    networks:
-      - vollmed
+  # api:
+  #   image: API.med.voll/api 
+  #   ports: 
+  #    - "8081:8081"
+  #   environment:
+  #     - MYSQL_URL=jdbc:mysql://db:3306/vollmed_api
+  #     - MYSQL_USER=root
+  #     - MYSQL_PASSWORD=pass
+  #     - JWT_SECRET=vegeta22
+  #   depends_on:
+  #     - db
+  #   networks:
+  #     - vollmed
 
 # Names our volume
 volumes:

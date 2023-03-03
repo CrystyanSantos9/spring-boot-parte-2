@@ -26,6 +26,13 @@ public class Usuario implements UserDetails {
     private String login;
     private String senha;
 
+    public void setLogin(String login){
+        this.login = login;
+    }
+    public void setPassword(String password){
+        this.senha = password;
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority("ROLE_USER"));
