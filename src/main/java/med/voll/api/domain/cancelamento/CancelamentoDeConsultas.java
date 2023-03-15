@@ -1,12 +1,12 @@
-package med.voll.api.domain.consulta;
+package med.voll.api.domain.cancelamento;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -18,36 +18,27 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import med.voll.api.domain.medico.Medico;
-import med.voll.api.domain.paciente.Paciente;
+import med.voll.api.domain.consulta.Consulta;
 
-@Table(name = "consultas")
-@Entity(name = "Consulta")
+@Table(name = "cancelamento_de_consultas")
+@Entity(name = "CancelamentoDeConsultas")
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
-public class Consulta {
+public class CancelamentoDeConsultas {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String status;
-
     @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "medico_id")
-    private Medico medico;
+    @JoinColumn(name = "consulta_id")
+    private Consulta consulta;
 
-    @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "paciente_id")
-    private Paciente paciente;
+    @Enumerated(EnumType.STRING)
+    private MotivoCancelamento motivo;
 
-    private LocalDateTime data;
-
-    public void excluir() {
-        this.status = "CANCELADO";
-    }
+    private LocalDateTime dataCancelamento;
 
 }
