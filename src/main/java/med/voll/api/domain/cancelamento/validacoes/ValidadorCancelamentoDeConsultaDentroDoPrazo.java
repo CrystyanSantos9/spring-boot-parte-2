@@ -8,16 +8,21 @@ import lombok.RequiredArgsConstructor;
 import med.voll.api.domain.ValidacaoException;
 import med.voll.api.domain.cancelamento.DadosCancelamentoConsulta;
 import med.voll.api.domain.consulta.ConsultaRepository;
+import org.springframework.core.annotation.Order;
 
 @Component
 @RequiredArgsConstructor
+@Order(3)
 public class ValidadorCancelamentoDeConsultaDentroDoPrazo implements ValidadorCancelamentoDeConsulta {
 
     private final ConsultaRepository consultaRepository;
 
     @Override
+   
     public void validar(DadosCancelamentoConsulta dados) {
-        var consulta = consultaRepository.findById(dados.idConsulta()).get();
+      //  var consulta = consultaRepository.findById(dados.idConsulta()).get();
+
+        var consulta = consultaRepository.getReferenceById(dados.idConsulta());
 
         var dataConsulta = consulta.getData();
 

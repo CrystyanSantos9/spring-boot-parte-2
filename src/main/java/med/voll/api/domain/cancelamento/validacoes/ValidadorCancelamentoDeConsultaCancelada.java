@@ -1,5 +1,6 @@
 package med.voll.api.domain.cancelamento.validacoes;
 
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import lombok.RequiredArgsConstructor;
@@ -9,6 +10,7 @@ import med.voll.api.domain.cancelamento.DadosCancelamentoConsulta;
 
 @Component
 @RequiredArgsConstructor
+@Order(2)
 public class ValidadorCancelamentoDeConsultaCancelada implements ValidadorCancelamentoDeConsulta {
 
     private final CancelamentoDeConsultaRepository cancelamentoDeConsultaRepository;
