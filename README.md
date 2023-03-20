@@ -38,6 +38,7 @@ As seguintes tecnologias foram utilizadas no desenvolvimento da API Rest do proj
 - **[Hibernate](https://hibernate.org)**
 - **[Flyway](https://flywaydb.org)**
 - **[Lombok](https://projectlombok.org)**
+- **[Docker](https://www.docker.com/)**
 
 ---
 
@@ -46,5 +47,16 @@ As seguintes tecnologias foram utilizadas no desenvolvimento da API Rest do proj
 Projeto desenvolvido por [Alura](https://www.alura.com.br) e utilizado nos cursos de Spring Boot.
 
 Instrutor: [Rodrigo Ferreira](https://cursos.alura.com.br/user/rodrigo-ferreira) 
+
+## 🚀 Executando
+
+Para executar o projeto execute o comando abaixo em seu terminal
+
+```
+
+docker-compose -f docker-compose.yaml up -d 
+
+```
+
 
 ---
