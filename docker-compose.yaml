@@ -26,7 +26,9 @@ services:
       - vollmed
 
   api:
-    image: API.med.voll/api 
+   # image: API.med.voll/api:v3 #cryssantos9/api.med.voll:v2
+    # baixando image do registry 
+    image: cryssantos9/api.med.voll:v2
     ports: 
      - "8081:8081"
     environment:

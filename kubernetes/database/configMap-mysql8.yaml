@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+    name: mysql8-configmap
+data: # dados que estão no application.properties
+    MYSQL_URL: jdbc:mysql://svcmysql8:3306/vollmed_api # colocar nome do svc no lugar do ip
+    MYSQL_USER: root
+    MYSQL_PASSWORD: pass
