@@ -54,9 +54,35 @@ Para executar o projeto execute o comando abaixo em seu terminal
 
 ```
 
-docker-compose -f docker-compose.yaml up -d 
+kind create cluster --config kind.config.yaml
+kind apply -f ingress.yaml
+
+Aguarde a execução do comando dar metch 
+kubectl wait --namespace ingress-nginx --for=condition=ready pod --selector=app.kubernetes.io/component=controller --timeout=90s
+
+kubectl apply -f kubernetes/database/svc-mysql8.yaml
+kubectl apply -f kubernetes/database/configMap-mysql8.yaml 
+kubectl apply -f kubernetes/database/deploy-mysql8.yaml 
+
+kubectl apply -f kubernetes/api/svc-api_medvoll.yaml 
+kubectl apply -f kubernetes/api/deploy-api_medvoll.yaml
+
+kubectl apply -f kubernetes/ingress/ingress_apimedvoll.yaml
+
 
 ```
 
+### Observação
+
+Altere o arquivo hosst ( windows || Linux ) e inclua o seu ip local, para
+o domínio que determinamos no ingress, ou seja:
+
+em hosts inclua
+
+192.168.1.110 api.medicos 
+
+Feito isso você poderá a api localmente no endereço abaixo:
+
+ULR: http://api.medicos/swagger-ui/index.html#
 
 ---
